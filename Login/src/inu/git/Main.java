@@ -26,6 +26,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Separator;
 
 public class Main extends Application {
 	
@@ -39,11 +40,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		BorderPane borderPane = new BorderPane();
-		borderPane.setBorder(new Border(new BorderStroke(
-				Color.DODGERBLUE,
-				BorderStrokeStyle.SOLID,
-				CornerRadii.EMPTY,
-				new BorderWidths(5))));
+//		borderPane.setBorder(new Border(new BorderStroke(
+//				Color.DODGERBLUE,
+//				BorderStrokeStyle.SOLID,
+//				CornerRadii.EMPTY,
+//				new BorderWidths(5))));
 		
 		FlowPane topInfo = new FlowPane();
 		GridPane centerGrid = new GridPane();
@@ -51,7 +52,16 @@ public class Main extends Application {
 		
 		Label title = new Label("Logowanie do systemu......");
 		topInfo.setPadding(new Insets(30, 10, 30, 10));
+		
 		topInfo.getChildren().add(title);
+		
+		Separator sep = new Separator(Orientation.HORIZONTAL);
+		VBox topBox = new VBox(topInfo, sep);
+		
+//		borderPane.setTop(topInfo);
+		borderPane.setTop(topBox);
+		
+		
 		
 		centerGrid.setHgap(30);
 		centerGrid.setVgap(10);
@@ -74,8 +84,6 @@ public class Main extends Application {
 		passwordField.setPrefWidth(150);
 		
 		
-		
-		
 		centerGrid.add(environment, 0, 0);
 		centerGrid.add(user, 0, 1);
 		centerGrid.add(password, 0, 2);
@@ -83,9 +91,6 @@ public class Main extends Application {
 		centerGrid.add(environmentBox, 1, 0);
 		centerGrid.add(userBox, 1, 1);
 		centerGrid.add(passwordField, 1, 2);
-				
-		
-		borderPane.setTop(topInfo);
 		
 		borderPane.setCenter(centerGrid);
 		
